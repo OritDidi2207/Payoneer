@@ -1,0 +1,51 @@
+
+
+
+
+
+1.
+SELECT p.PlayerId, p.PlayerName, max(g.Score) As max_score
+FROM Players p
+JOIN Game_tbl g
+ON p.PlayerId = g.PlayerId1
+GROUP BY PlayerId
+
+
+2.
+SELECT p.PlayerName
+FROM players p
+LEFT JOIN Game_tbl g ON p.PlayerId = g.PlayerId1
+WHERE g.PlayerId1 IS NULL
+
+3. 
+
+SELECT p.PlayerName, SUM(g.Score) As total
+FROM Players p
+JOIN Game_tbl g
+ON p.PlayerId = g.PlayerId1
+GROUP BY PlayerId
+HAVING SUM(g.Score) > 200
+
+
+
+/* Create a table called NAMES */
+CREATE TABLE Players(PlayerId integer PRIMARY KEY, PlayerName text);
+
+CREATE TABLE Game_tbl(GameId integer PRIMARY KEY, PlayerId1 integer, Score integer);
+
+/* Create few records in this table */
+ INSERT INTO Game_tbl VALUES(1,1,153);
+ INSERT INTO Game_tbl VALUES(2,1,1);
+ INSERT INTO Game_tbl VALUES(3,1,15);
+ INSERT INTO Game_tbl VALUES(4,2,14554);
+ INSERT INTO Game_tbl VALUES(5,2,12);
+ INSERT INTO Game_tbl VALUES(6,3,123);
+ INSERT INTO Game_tbl VALUES(7,3,10);
+ INSERT INTO Game_tbl VALUES(8,4,2);
+ INSERT INTO Game_tbl VALUES(9,4,24);
+INSERT INTO Players VALUES(1,"Alon");
+INSERT INTO Players VALUES(2,"michal");
+INSERT INTO Players VALUES(3,"Or");
+INSERT INTO Players VALUES(4,"Oren");
+INSERT INTO Players VALUES(5,"Ron");
+
