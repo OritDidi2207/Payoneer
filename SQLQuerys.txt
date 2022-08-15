@@ -1,8 +1,4 @@
 
-
-
-
-
 1.
 SELECT p.PlayerId, p.PlayerName, max(g.Score) As max_score
 FROM Players p
@@ -28,9 +24,10 @@ HAVING SUM(g.Score) > 200
 
 
 
-/* Create a table called NAMES */
+/* Create a table called Players */
 CREATE TABLE Players(PlayerId integer PRIMARY KEY, PlayerName text);
 
+/* Create a table called Game_tbl */
 CREATE TABLE Game_tbl(GameId integer PRIMARY KEY, PlayerId1 integer, Score integer);
 
 /* Create few records in this table */
